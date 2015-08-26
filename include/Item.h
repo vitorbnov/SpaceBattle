@@ -18,7 +18,7 @@ class Item : public Polygon{
         Item(int);
         void setType(int);
         int getType();
-        virtual ~Item();
+        ~Item();
     protected:
         int id;
 };

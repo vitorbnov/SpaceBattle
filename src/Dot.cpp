@@ -1,3 +1,4 @@
+#include "../LUtil.h"
 #include "Dot.h"
 #include <cmath>
 
@@ -45,18 +46,44 @@ Dot Dot::operator-(Dot p){
     return Dot(a, b);
 }
 
-float Dot::triangleArea(Dot b, Dot c){
-    float bx = b.getX();
-    float by = b.getY();
-    float cx = c.getX();
-    float cy = c.getY();
-    return 0.5*(x*by + y*bx + y*cx - x*cy + bx*cy + by*cx);
+float Dot::operator*(Dot p){
+    return (x*p.getX() + y*p.getY());
+}
+
+Dot Dot::operator*(float k){
+    float a, b;
+
+    a = x*k;
+    b = x*k;
+
+    return Dot(a, b);
+}
+
+float Dot::whichSide(Dot a, Dot b){
+    float xa = a.getX();
+    float ya = a.getY();
+    float xb = b.getX();
+    float yb = b.getY();
+
+    return (xa*yb - ya*xb + y*(xb-xa) + x*(ya-yb));
 }
 
 float Dot::module(){
     return sqrt(x*x + y*y);
 }
 
+float Dot::angle(){
+    return (atan2(y, x));//*180/PI
+}
+
+Dot Dot::transf(float rotatee, Dot translade){
+    Dot p;
+    p.setX(x*cos(rotatee*PI/180)-y*sin(rotatee*PI/180));
+    p.setY(x*sin(rotatee*PI/180) + y*cos(rotatee*PI/180));
+    return (p + translade);
+}
+
 Dot::~Dot(){
 
 }
+

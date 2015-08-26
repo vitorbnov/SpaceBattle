@@ -9,6 +9,7 @@ Aircraft::Aircraft(int m){
             loop_vertex.push_back(Dot(5,0));
             loop_vertex.push_back(Dot(-6,-6));
             loop_vertex.push_back(Dot(0,0));
+            shot_dots.push_back(Dot(6,0));
         break;
         case 1:
             loop_vertex.push_back(Dot(-3, 5));
@@ -27,32 +28,34 @@ Aircraft::Aircraft(int m){
             lines_vertex.push_back(Dot(1, -5));
         break;
     }
-
     model = m;
+    next_shot = 0;
 
-
-    color[RED] = 1;
-    color[GREEN] = 1;
-    color[BLUE] = 1;
-
-    position = Dot(0,0);
-    speed = Dot(0,0);
-    direction = 0;
-
-    acceleration = 0.05;
-    handling = 2.5;
+    for(int i=0; i<NUM_SHOTS; i++){
+        shots[i].setColor(0, 1, 1);
+        shots[i].setActive(false);
+    }
 }
 
 void Aircraft::catchItem(Item *item){
-    switch(item->getType()){
+    upgradeStat(item->getType());
+
+    //delete item;
+}
+
+void Aircraft::upgradeStat(int stat){
+    switch(stat){
         case SHIELD:
             //
         break;
         case BACK:
-            //
+            //shot_dots.push_back(Dot(-1,0));
         break;
         case DUAL:
-            //
+            setColor(1, 0, 1);
+            //shot_dots.erase(shot_dots.begin());
+            //shot_dots.push_back(Dot(6, 0.5));
+            //shot_dots.push_back(Dot(6, -0.5));
         break;
         case FAST:
             //
@@ -71,8 +74,6 @@ void Aircraft::catchItem(Item *item){
             }
         break;
     }
-
-    delete item;
 }
 
 Aircraft::~Aircraft()

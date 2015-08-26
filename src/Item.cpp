@@ -84,7 +84,6 @@ int Item::getType(){
     return id;
 }
 
-Item::~Item()
-{
-    //dtor
+Item::~Item(){
+
 }

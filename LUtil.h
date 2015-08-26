@@ -11,6 +11,11 @@ and may not be redistributed without written permission.*/
 
 #define PI 3.14159265
 
+#define XMIN -200
+#define XMAX 200
+#define YMIN -200
+#define YMAX 200
+
 //Screen Constants
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
@@ -69,4 +74,6 @@ Side Effects:
  -Swaps the front/back buffer
 */
 
+void initGame();
+void clearGame();
 #endif

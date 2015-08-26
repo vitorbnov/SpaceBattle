@@ -3,12 +3,20 @@
 #include "../LUtil.h"
 
 Shot::Shot(){
-    lines_vertex.push_back(Dot(0,0));
-    lines_vertex.push_back(Dot(2,0));
+    loop_vertex.push_back(Dot(0,0));
+    loop_vertex.push_back(Dot(3,0));
 
-    color[RED] = 0;
-    color[GREEN] = 0;
-    color[BLUE] = 1;
+    color[RED] = 1;
+    color[GREEN] = 0.5;
+    color[BLUE] = 0;
+}
+
+void Shot::setActive(bool a){
+    active = a;
+}
+
+bool Shot::getActive(){
+    return active;
 }
 
 Shot::~Shot()

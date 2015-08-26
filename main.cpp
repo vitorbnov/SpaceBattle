@@ -4,6 +4,10 @@ and may not be redistributed without written permission.*/
 
 #include "LUtil.h"
 #include "Polygon.h"
+#include "Aircraft.h"
+#include "Game.h"
+
+
 
 void runMainLoop( int val );
 /*
@@ -34,17 +38,22 @@ int main(int argc, char* args[]){
 
     glutDisplayFunc(render); // estabelece a função “display" como a função callback de exibição. Isto significa que a GLUT chama a função sempre que a janela precisar ser redesenhada.
 
-    glutKeyboardFunc(keyPressed); // Tell GLUT to use the method "keyPressed" for key presses
+    glutKeyboardFunc(keyPressed); // Te ll GLUT to use the method "keyPressed" for key presses
     glutKeyboardUpFunc(keyUp);  // Tell GLUT to use the method "keyUp" for key up events
+
 
     glutSpecialFunc(keySpecial); // Tell GLUT to use the method "keySpecial" for special key presses
     glutSpecialUpFunc(keySpecialUp); // Tell GLUT to use the method "keySpecialUp" for special up key events
-
 	//Set main loop
 	glutTimerFunc( 1000 / SCREEN_FPS, runMainLoop, 0 );
 
+    //Init the game
+	initGame();
+
 	//Start GLUT main loop
     glutMainLoop(); // é a função que faz com que comece a execução
+
+    clearGame();
 
     return 0;
 }

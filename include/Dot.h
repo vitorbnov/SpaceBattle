@@ -16,14 +16,26 @@ class Dot{
         float getY();
 
         // Sum of Dots
-        Dot operator+(Dot p);
-        Dot operator-(Dot p);
+        Dot operator+(Dot);
+        Dot operator-(Dot);
+
+        // Scalar product
+        float operator*(Dot);
+
+        // Scalar multiply
+        Dot operator*(float);
 
         //Module
         float module();
 
+        //Angle
+        float angle();
+
+        //Transform point coordinates
+        Dot transf(float, Dot);
+
         //Triangle Area between 3 points
-        float triangleArea(Dot,Dot);
+        float whichSide(Dot,Dot);
 
         // Destructor
         virtual ~Dot();
