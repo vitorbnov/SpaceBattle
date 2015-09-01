@@ -28,8 +28,8 @@ void Polygon::setSpeed(Dot s){
     speed = s;
 }
 void Polygon::setSpeed(float angle, float module){
-    speed.setX(module*cos(angle));
-    speed.setY(module*sin(angle));
+    speed.setX(module*cos(angle*PI/180));
+    speed.setY(module*sin(angle*PI/180));
 }
 void Polygon::setDirection(float d){
     direction = d;
@@ -40,6 +40,17 @@ void Polygon::setAcceleration(float a){
 void Polygon::setHandling(float h){
     handling = h;
 }
+
+void Polygon::sumSpeed(Dot s){
+    speed = speed + s;
+}
+void Polygon::sumSpeed(float angle, float module){
+    Dot s;
+    s.setX(module*cos(angle*PI/180));
+    s.setY(module*sin(angle*PI/180));
+    speed = speed + s;
+}
+
 
 float* Polygon::getColor(){
     return color;
@@ -208,7 +219,7 @@ bool Polygon::hasDotInside(Dot p){
     return (interceptions%2 == 0) ? false : true;
 }
 
-bool Polygon::isInsideOfPolygon(Polygon *p){
+bool Polygon::hasPartsInsideOfPolygon(Polygon *p){
     Dot dot;
     int vertices;
 

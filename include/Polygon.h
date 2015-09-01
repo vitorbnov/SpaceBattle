@@ -18,6 +18,9 @@ class Polygon{
         void setDirection(float);
         void setAcceleration(float);
         void setHandling(float);
+        void sumSpeed(Dot);
+        void sumSpeed(float, float);
+
 
         // Getters
         float* getColor();
@@ -36,10 +39,11 @@ class Polygon{
         void limitPosition();
         void limitSpeed();
         void iterate(bool, bool, bool);
+        void specificIterations(bool);
         bool isInterceptingSegments(Dot, Dot, Dot, Dot);
         bool isInterceptingPolygon(Polygon*);
         bool hasDotInside(Dot);
-        bool isInsideOfPolygon(Polygon*);
+        bool hasPartsInsideOfPolygon(Polygon*);
         void draw();
         virtual ~Polygon();
     protected:

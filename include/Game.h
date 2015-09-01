@@ -6,6 +6,8 @@
 #include "Aircraft.h"
 #include "Asteroid.h"
 
+#define SHOTS_MAX 64
+
 class Game{
     public:
         Game();
@@ -13,18 +15,26 @@ class Game{
         void setPlayer(Aircraft*);
         Aircraft *getPlayer();
 
-        void checkPositions(Polygon*);
-        void iterate(bool, bool, bool);
+        void shoot(Aircraft*);
+        void crash(Asteroid*);
+        void removeShot(Shot*);
+        void destroy(Polygon*);
+        void assignItem(Aircraft*, Item*);
+        void iterate(bool, bool, bool, bool);
         void draw(void);
-        void printWord(float, float,const char*, void*);
+        void printWord(float, float, const char*, void*);
         virtual ~Game();
     protected:
     private:
-        Aircraft *aircrafts[3];
+        long iterations;
+        //Aircraft *aircrafts[3];
         Aircraft *player;
-        Asteroid *asteroid;
-        Shot *shot;
-        Item *item;
+        std::vector<Asteroid*> asteroids;
+        //Shot *shot;
+        std::vector<Item*> items;
+        std::vector<Shot*> shots;
+        std::vector<Shot*> to_shot;
+        std::vector<Polygon*> destroyed;
         int interceptions;
         //vector<Polygon> enemies;
 };

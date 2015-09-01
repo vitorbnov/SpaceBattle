@@ -17,15 +17,15 @@ class Asteroid : public Polygon{
         Asteroid(int);
 
         void setItem(Item*);
-        void setParts(std::vector<Asteroid*>);
+        void setParts(std::vector<Asteroid*>*);
 
         Item* getItem();
-        std::vector<Asteroid*> getParts();
+        std::vector<Asteroid*>* getParts();
 
         virtual ~Asteroid();
     protected:
     private:
-        std::vector<Asteroid*> parts;
+        std::vector<Asteroid*> *parts;
         Item *item;
 };
 

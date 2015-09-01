@@ -72,7 +72,7 @@ bool initGL(){
 void update(){
     Dot pos;
 
-    game->iterate(keySpecialStates[GLUT_KEY_UP], keySpecialStates[GLUT_KEY_LEFT], keySpecialStates[GLUT_KEY_RIGHT]);
+    game->iterate(keySpecialStates[GLUT_KEY_UP], keySpecialStates[GLUT_KEY_LEFT], keySpecialStates[GLUT_KEY_RIGHT], keyStates[' ']);
 
 }
 

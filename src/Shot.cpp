@@ -4,19 +4,29 @@
 
 Shot::Shot(){
     loop_vertex.push_back(Dot(0,0));
-    loop_vertex.push_back(Dot(3,0));
+    loop_vertex.push_back(Dot(4,0));
 
-    color[RED] = 1;
-    color[GREEN] = 0.5;
-    color[BLUE] = 0;
+    color[RED] = 0;
+    color[GREEN] = 1;
+    color[BLUE] = 1;
+
+    iterations_left = 0;
 }
 
-void Shot::setActive(bool a){
-    active = a;
+void Shot::setIterationsLeft(long iterations){
+    iterations_left = iterations;
 }
 
-bool Shot::getActive(){
-    return active;
+long Shot::getIterationsLeft(){
+    return iterations_left;
+}
+
+void Shot::reduceIterationsLeft(){
+    iterations_left--;
+}
+
+bool Shot::hasIterationsLeft(){
+    return (iterations_left > 0)? true : false;
 }
 
 Shot::~Shot()

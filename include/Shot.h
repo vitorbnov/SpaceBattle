@@ -7,13 +7,16 @@ class Shot : public Polygon{
     public:
         Shot();
 
-        void setActive(bool);
-        bool getActive();
+        void setIterationsLeft(long);
+        long getIterationsLeft();
 
+        bool hasIterationsLeft();
+
+        void reduceIterationsLeft();
         virtual ~Shot();
     protected:
     private:
-        bool active;
+        long iterations_left;
 };
 
 #endif // SHOT_H

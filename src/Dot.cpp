@@ -79,7 +79,7 @@ float Dot::angle(){
 Dot Dot::transf(float rotatee, Dot translade){
     Dot p;
     p.setX(x*cos(rotatee*PI/180)-y*sin(rotatee*PI/180));
-    p.setY(x*sin(rotatee*PI/180) + y*cos(rotatee*PI/180));
+    p.setY(x*sin(rotatee*PI/180)+y*cos(rotatee*PI/180));
     return (p + translade);
 }
 
