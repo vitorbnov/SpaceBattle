@@ -25,7 +25,7 @@ int main(int argc, char* args[]){
     glutInitContextVersion( 2, 1 ); //Create OpenGL 2.1 context
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // avisa a GLUT que tipo de modo de exibição deve ser usado quando a janela é criada
     glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT); // tamanho da janela
-    glutInitWindowPosition(100, 100); // posição inicial no canto superior esquerdo na tela
+    glutInitWindowPosition(200, 100); // posição inicial no canto superior esquerdo na tela
     glutCreateWindow("SpaceBattle"); // comando da biblioteca GLUT que cria a janela.
 
 	//Do post window/context creation initialization
@@ -40,7 +40,6 @@ int main(int argc, char* args[]){
 
     glutKeyboardFunc(keyPressed); // Te ll GLUT to use the method "keyPressed" for key presses
     glutKeyboardUpFunc(keyUp);  // Tell GLUT to use the method "keyUp" for key up events
-
 
     glutSpecialFunc(keySpecial); // Tell GLUT to use the method "keySpecial" for special key presses
     glutSpecialUpFunc(keySpecialUp); // Tell GLUT to use the method "keySpecialUp" for special up key events
