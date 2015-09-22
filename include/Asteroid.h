@@ -13,19 +13,20 @@ enum ASTEROID_SIZE{
 
 class Asteroid : public Polygon{
     public:
-        Asteroid();
         Asteroid(int);
 
         void setItem(Item*);
-        void setParts(std::vector<Asteroid*>*);
+        void addPart(Asteroid*);
+        Asteroid* backPart();
+        Asteroid* popBackPart();
+        bool hasParts();
 
         Item* getItem();
-        std::vector<Asteroid*>* getParts();
 
         virtual ~Asteroid();
     protected:
     private:
-        std::vector<Asteroid*> *parts;
+        std::vector<Asteroid*> parts;
         Item *item;
 };
 

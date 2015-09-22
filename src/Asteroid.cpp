@@ -10,12 +10,11 @@ Asteroid::Asteroid(int ast_size){
     Dot d;
 
     item = NULL;
-    parts = NULL;
 
     dots = 3*pow(2,ast_size);
     interval = 360/dots;
-    min_radius = 6*pow(2,ast_size);
-    delta_radius = 1.5*min_radius;
+    min_radius = 10*pow(2,ast_size);
+    delta_radius = 1.25*min_radius;
 
     //Generating vertex
     for(i=0; i<dots; i++){
@@ -29,53 +28,79 @@ Asteroid::Asteroid(int ast_size){
 
 
     if(ast_size != SMALL){
-        //Generating subparts
-        parts = new std::vector<Asteroid*>();
 
+        //Generating subparts
         gen = rand()%2+2;
         while(gen>0){
             ast = new Asteroid(ast_size-1);
             d.setX(rand()%4-2);
             d.setY(rand()%4-2);
             ast->setSpeed(d);
-            parts->push_back(ast);
+            parts.push_back(ast);
             gen--;
         }
     }
 
     if(ast_size == BIG){
         //Generating item
-        gen = rand()%21;
+        gen = rand()%(NUM_ITEMS*3);
         if(gen%3 == 0){
             item = new Item(gen/3);
+            item->setSpeed(rand()%360, 0.25);
         }
     }
 
     //Adjusting centroid
     centralize();
 
-
-    setColor(0, 1, (float)(BIG - ast_size)/BIG);
+    //setColor(0, 1, (float)(BIG - ast_size)/BIG);
+    setColor(0, (GLfloat)(ast_size*0.125 + 0.75), (GLfloat)(0.25-ast_size*0.125));
     setHandling(1);
+
+    if(rand()%2 == 0){
+        commands[TURN_LEFT] = true;
+    }
+    else{
+        commands[TURN_RIGHT] = true;
+    }
 }
 
 void Asteroid::setItem(Item* it){
     item = it;
 }
 
-void Asteroid::setParts(std::vector<Asteroid*> *p){
-    parts = p;
+void Asteroid::addPart(Asteroid *p){
+    parts.push_back(p);
+}
+
+Asteroid* Asteroid::backPart(){
+    parts.back();
+}
+
+Asteroid* Asteroid::popBackPart(){
+    Asteroid *a;
+
+    a = parts.back();
+    parts.pop_back();
+
+    return a;
+}
+
+bool Asteroid::hasParts(){
+    return !parts.empty();
 }
 
 Item* Asteroid::getItem(){
     return item;
 }
 
-std::vector<Asteroid*>* Asteroid::getParts(){
-    return parts;
-}
+Asteroid::~Asteroid(){
+    Asteroid *asteroid;
 
-Asteroid::~Asteroid()
-{
-    //dtor
+    while(!parts.empty()){
+        asteroid = parts.back();
+        parts.pop_back();
+        delete asteroid;
+    }
+    if(item != NULL) delete item;
 }
