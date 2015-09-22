@@ -8,7 +8,7 @@ GameObj::GameObj(){
     direction = 90;
 
     acceleration = 0.05;
-    handling = 2.5;
+    handling = 2;
 
     commands[0] = false;
     commands[1] = false;
