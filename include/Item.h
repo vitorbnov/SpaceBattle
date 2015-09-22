@@ -3,14 +3,16 @@
 
 #include "Polygon.h"
 
-enum ICode{
+#define NUM_ITEMS 6
+
+enum itemCode{
     SHIELD = 0,
-    BACK,
+    //BACK,
     DUAL,
     FAST,
     LONG,
     HANDLING,
-    BOOST,
+    BOOST_ITEM,
 };
 
 class Item : public Polygon{

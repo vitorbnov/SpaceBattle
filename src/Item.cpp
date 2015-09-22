@@ -22,13 +22,13 @@ Item::Item(int value){
             strip_vertex.push_back(Dot(-3, 1));
             strip_vertex.push_back(Dot(0, 2));
         break;
-        case BACK:
+        /*case BACK:
             loop_vertex.push_back(Dot(-3, 5));
             loop_vertex.push_back(Dot(-3, -5));
             loop_vertex.push_back(Dot(6, 0));
             lines_vertex.push_back(Dot(-3, 0));
             lines_vertex.push_back(Dot(-1, 0));
-        break;
+        break;*/
         case DUAL:
             loop_vertex.push_back(Dot(-3, 5));
             loop_vertex.push_back(Dot(-3, -5));
@@ -62,7 +62,7 @@ Item::Item(int value){
             strip_vertex.push_back(Dot(4, 0));
             strip_vertex.push_back(Dot(-3, -3));
         break;
-        case BOOST:
+        case BOOST_ITEM:
             loop_vertex.push_back(Dot(-3, 5));
             loop_vertex.push_back(Dot(-3, -5));
             loop_vertex.push_back(Dot(6, 0));
@@ -85,5 +85,4 @@ int Item::getType(){
 }
 
 Item::~Item(){
-
 }
