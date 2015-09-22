@@ -21,12 +21,17 @@ long Shot::getIterationsLeft(){
     return iterations_left;
 }
 
+bool Shot::hasIterationsLeft(){
+    return (iterations_left > 0)? true : false;
+}
+
 void Shot::reduceIterationsLeft(){
     iterations_left--;
 }
 
-bool Shot::hasIterationsLeft(){
-    return (iterations_left > 0)? true : false;
+void Shot::iterate(){
+    GameObj::iterate();
+    reduceIterationsLeft();
 }
 
 Shot::~Shot()

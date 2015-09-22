@@ -13,6 +13,8 @@ class Shot : public Polygon{
         bool hasIterationsLeft();
 
         void reduceIterationsLeft();
+
+        void iterate();
         virtual ~Shot();
     protected:
     private:
