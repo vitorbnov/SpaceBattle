@@ -6,36 +6,49 @@
 #include "Shot.h"
 #include "Gun.h"
 
-#define MAX_HANDLING 7
-#define MAX_ACCELERATION 0.2
+#define MAX_SHIELD 50
+#define MAX_HANDLING 5
+#define MAX_ACCELERATION 0.11
+#define MIN_DELAY_TIME_SHOOTING 5
+#define MAX_ITERATIONS_RANGE_SHOOTING 75
 
 class Aircraft : public Polygon{
     public:
         Aircraft(int);
 
-        void setDelayTimeShooting(long);
-        void setLastTimeShooting(long);
+        void setShield(int);
+        void setDelayTimeShooting(int);
+        void setLastTimeShooting(int);
         void setIterationsRangeShooting(long);
 
-        long getDelayTimeShooting();
-        long getLastTimeShooting();
+        int getModel();
+        int getShield();
+        int getDelayTimeShooting();
+        int getLastTimeShooting();
         long getIterationsRangeShooting();
+
+        bool isShielded();
 
         bool canShoot(long);
         void catchItem(Item*);
         void upgradeStat(int);
         int getGuns();
         Gun getGunAt(int);
+        void damageShield(int);
+        void resetStats();
+        //void iterate();
+        void draw();
         virtual ~Aircraft();
     protected:
     private:
         int model;
-        bool shielded;
+        int shield;
         bool dual;
         bool back_shot;
-        long delay_time_shooting;
-        long last_time_shooting;
+        int delay_time_shooting;
+        int last_time_shooting;
         long iterations_range_shooting;
+        std::vector<Dot> shield_vertex;
         std::vector<Gun> guns;
 };
 
