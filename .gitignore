@@ -1,4 +1,5 @@
-bin/Debug/*
-obj/Debug/*.o
+Makefile~
+bin/*
+obj/*
 SpaceBattle.*
 
